@@ -1,6 +1,6 @@
 # Rails Facebook Groups Application
 
-This is Rails FaceBook Groups Application
+This is Rails Facebook Groups Demo Application
 This application has following features: 
 - login with Facebook
 - List facebook Groups
@@ -8,55 +8,76 @@ This application has following features:
 - Manage keywords
 - send notification if new post added matching Keyword
 
-## This application has APIs as below: 
-
-# List facebook Groups
-  method: GET
-  localhost:3000/groups?token={facebook authentication/access_token}
-
-# List Facebbok Groups > Posts/Feeds
-  method: GET
-  localhost:3000/posts?group_id=1&token={facebook authentication/access_token}
-
-# Manage keywords
-## list keywords 
-  method: GET
-  localhost:3000/keywords?group_id=1&token={facebook authentication/access_token}
-
-## create keywords 
-	method: POST
-  localhost:3000/keywords?keyword=test&group_id=1&token={facebook authentication/access_token}
-
-## update keywords 
-   method: PUT
-  localhost:3000/keywords?keyword=post&group_id=1&token={facebook authentication/access_token}
-
-## delete keyword 
-  localhost:3000/keywords?id=1&group_id=1&token={facebook authentication/access_token}
-  method: DELETE
-
-
 ### Installation
 
 ```sh
 $ rvm 2.6.4
-$ bundle
+$ bundle install
 $ update database.yml file
 $ rake db:create
 $ rake db:migrate
-<!-- $ rake db:seed -->
 $ rails s
 ```
+
+### Start/Stop delayed job
+```sh
+$ RAILS_ENV=development bin/delayed_job start
+$ RAILS_ENV=development bin/delayed_job stop
+```
+
 ### Online Demo
-[https://polar-inlet-85607.herokuapp.com/](https://polar-inlet-85607.herokuapp.com/) 
+[https://stormy-lowlands-95714.herokuapp.com/](https://stormy-lowlands-95714.herokuapp.com/) 
 
 
-### Testing Users
+### Testing User
+| fb         | login      |
+|------------|------------|
+| username   | password   |
+| 9730919135 | chetan4111 |
 
-| user | password |
-| ------ | ------ |
-| test-1@gmail.com | 123456 |
-| test-2@gmail.com | 123456 |
+### NOTE
+- App login password is set using email and appending 123 in it
+- Example: email : chetan.tete@gmail.com, so password will be chetan.tete@gmail.com123
 
+
+## This application has APIs as below: 
+#### List Keywords
+GET /api/v1/keywords HTTP/1.1
+Host: stormy-lowlands-95714.herokuapp.com
+Authorization: {token}
+
+#### Create Keyword
+POST /api/v1/keywords HTTP/1.1
+Host: stormy-lowlands-95714.herokuapp.com
+Authorization: {token}
+Cache-Control: no-cache
+Postman-Token: 55560958-1948-a906-6062-34f1dd9fc4aa
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="keyword[keyword]"
+test
+Content-Disposition: form-data; name="keyword[group_id]"
+1
+
+#### Update Keyword and Delete Keyword 
+#### Generate Authorization Token
+POST /api/v1/home/generate_token HTTP/1.1
+Host: stormy-lowlands-95714.herokuapp.com
+Cache-Control: no-cache
+Postman-Token: 31d79cf6-4862-a17e-d5c1-81c7cbd1951a
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="email"
+laavibangre@gmail.com
+Content-Disposition: form-data; name="password"
+laavibangre@gmail.com123
+
+#### List Facebook Groups
+GET /api/v1/groups HTTP/1.1
+Host: stormy-lowlands-95714.herokuapp.com
+Authorization: {token}
+
+#### List Facebook Posts
+GET /api/v1/posts HTTP/1.1
+Host: stormy-lowlands-95714.herokuapp.com
+Authorization: {token}
 
 Thanks!
