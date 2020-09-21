@@ -310,7 +310,7 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
     # config.omniauth :facebook, "262729554850278", "ef3518c29746480418d0480bc060c4c4",
 
-  config.omniauth :facebook, "443508333276806", "1686425f50a95486f55e9a69c1b4b540",
+  config.omniauth :facebook, "741066533117826", "5978183a4c87aa857bbf5245e3cbdfbe",
    callback_url: "https://stormy-lowlands-95714.herokuapp.com/users/auth/facebook/callback"
    # callback_url: "http://localhost:3000/users/auth/facebook/callback"
 end

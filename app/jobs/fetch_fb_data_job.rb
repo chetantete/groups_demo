@@ -9,7 +9,7 @@ class FetchFbDataJob < ApplicationJob
       update_group_data(groups, user) if groups.present?
       groups = user.groups
       groups.each do |group|
-        #Note: For fetching feeds From Facebook Requires either admin with granted managed_group pemissions or member
+        #Note: For fetching posts From Facebook Requires either admin with granted managed_group pemissions or member
         group_posts = @graph.get_object("#{group['fb_id']}/feed") rescue "" if group.privacy.present? 
         new_records = []
         new_records = update_post_data(group, group_posts) if group_posts.present?
