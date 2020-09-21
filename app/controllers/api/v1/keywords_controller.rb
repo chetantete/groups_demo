@@ -19,7 +19,6 @@ class Api::V1::KeywordsController < ApplicationController
   # POST /keywords
   # POST /keywords.json
   def create
-    debugger
     @keyword = Keyword.new(keyword_params)
     if @keyword.save
       render json: { status: 200, data: @keyword}
@@ -31,7 +30,6 @@ class Api::V1::KeywordsController < ApplicationController
   # PATCH/PUT /keywords/1
   # PATCH/PUT /keywords/1.json
   def update
-    # debugger
     if @keyword.update(keyword_params)
       render json: { status: 200, data: @keyword}
     else
@@ -53,7 +51,7 @@ class Api::V1::KeywordsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_keyword
       @keyword = Keyword.find(params[:id]) rescue ""
-      
+      render json: { status: 403, error: true, message: "keyword not found"} if @keyword.blank?
     end
 
     # Only allow a list of trusted parameters through.
