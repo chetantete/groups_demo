@@ -45,6 +45,10 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    apn_sender (2.0.1)
+      activesupport (>= 3.1)
+      connection_pool
+      daemons
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -80,6 +84,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
+    connection_pool (2.2.3)
     crass (1.0.6)
     daemons (1.3.1)
     delayed_job (4.1.8)
@@ -203,6 +208,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails-push-notifications (0.2.2)
+      rails (>= 3.2)
+      ruby-push-notifications (~> 0.3)
     railties (5.2.4.3)
       actionpack (= 5.2.4.3)
       activesupport (= 5.2.4.3)
@@ -249,6 +257,8 @@ GEM
     rubocop-ast (0.3.0)
       parser (>= 2.7.1.4)
     ruby-progressbar (1.10.1)
+    ruby-push-notifications (0.4.0)
+      builder (~> 3.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     rufus-scheduler (3.6.0)
@@ -310,6 +320,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apn_sender
   bootsnap (>= 1.1.0)
   bootstrap (= 4.0.0.alpha6)
   byebug
@@ -334,6 +345,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-assets-chosen!
   rails-assets-tether (>= 1.3.3)!
+  rails-push-notifications (~> 0.2.0)
   redis (~> 4.0)
   rspec-rails (~> 4.0.1)
   rubocop
